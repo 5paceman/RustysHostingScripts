@@ -1,0 +1,16 @@
+[Unit]
+Description=message queue service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=0
+User=root
+ExecStart=/usr/local/bin/brooce
+
+[Install]
+WantedBy=multi-user.target
+

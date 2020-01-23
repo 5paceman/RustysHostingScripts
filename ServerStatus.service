@@ -1,0 +1,17 @@
+[Unit]
+Description=Checks all server status'
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=180
+StartLimitIntervalSec=0
+User=root
+WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/local/bin/UpdateServerStatus.sh
+
+[Install]
+WantedBy=multi-user.target
+
