@@ -49,5 +49,5 @@ sed -i "s:#execpath#:/home/$INSTANCEID/rust/runds.sh:g" /etc/systemd/system/$INS
 sed -i "s:#workingpath#:/home/$INSTANCEID/rust/:g" /etc/systemd/system/$INSTANCEID.service
 systemctl enable $INSTANCEID
 systemctl start $INSTANCEID
-sed -i -e '$a\' -e "$INSTANCEID" ServerList.txt
+sed -i -e '$a\' -e "$INSTANCEID" /usr/local/bin/ServerList.txt
 echo "========== END =========="

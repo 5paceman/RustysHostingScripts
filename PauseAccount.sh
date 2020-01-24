@@ -13,5 +13,6 @@ if grep -q $SERVICEID "/usr/local/bin/ServerList.txt"; then
 fi
 echo "Disabling service"
 systemctl disable $SERVICEID
+systemctl stop $SERVICEID
 echo "Adding to FTP block list"
 sed -i -e '$a\' -e "$SERVICEID" /etc/vsftpd.userlist
