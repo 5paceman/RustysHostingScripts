@@ -11,18 +11,17 @@ if [ "$DEBUG" = false ] ; then
 fi
 
 INSTANCEID=$1
-BASEPORT=25565
+BASEPORT=$2
 
 echo "========= RemoveUser.sh =========="
 echo "InstanceID is $INSTANCEID"
 echo "Killing all processes.."
 USERID=$(id -u $INSTANCEID)
 pkill -U $USERID
-PORT=$((BASEPORT+USERID))
 echo "Removing firewall rule.."
-ufw delete allow $PORT
-# possibly remove game server
-# delete game service files
+ufw delete allow $BASEPORT
+ufw delete $(($BASEPORT + 1))
+ufw delete $(($BASEPORT + 2))
 echo "Removing user.."
 userdel $INSTANCEID
 echo "Removing user files.."
