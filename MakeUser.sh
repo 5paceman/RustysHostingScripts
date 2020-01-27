@@ -40,7 +40,7 @@ sed -i "s:SERVERPORT=.*:SERVERPORT=$GAMEPORT:g" /home/$INSTANCEID/rust/runds.sh
 sed -i "s:RCONPORT=.*:RCONPORT=$(($GAMEPORT + 1)):g" /home/$INSTANCEID/rust/runds.sh
 sed -i "s:RCONPASSWORD=.*:RCONPASSWORD=\"$PASSWORD\":g" /home/$INSTANCEID/rust/runds.sh
 chown -R $INSTANCEID /home/$INSTANCEID/rust/
-usermod --home /home/$INSTANCEID/rust/oxide/ $INSTANCEID
+usermod --home /home/$INSTANCEID/rust/server/identity/ $INSTANCEID
 echo "Creating service..."
 cp /usr/local/bin/TemplateService.service /etc/systemd/system/$INSTANCEID.service
 sed -i "s:#description#:$INSTANCEID game service:g" /etc/systemd/system/$INSTANCEID.service
