@@ -11,5 +11,9 @@ echo "Stopping service"
 systemctl stop $SERVICEID
 echo "Updating with SteamCMD"
 /usr/games/steamcmd +login anonymous +force_install_dir "/home/$SERVICEID/rust/"  +app_update 258550 +quit
+cd "/home/$SERVICEID/rust/"
+echo "Downloading oxide"
+wget https://umod.org/games/rust/download/develop
+unzip -o develop
 echo "Starting service"
 systemctl start $SERVICEID

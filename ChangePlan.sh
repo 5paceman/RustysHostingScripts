@@ -6,4 +6,7 @@ echo "Removing user from old group."
 deluser $INSTANCEID $ORIGINALPLAN
 echo "Adding user to new group."
 usermod -a -G $NEWPLAN $INSTANCEID
+echo "Setting disk quota"
+SOFTLIMIT=$(((HARDLIMIT / 100) * 80))
+setquota -u $INSTANCEID $SOFTLIMIT $HARDLIMIT 0 0 /
 echo "Complete."
