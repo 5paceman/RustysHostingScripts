@@ -17,6 +17,10 @@ echo "========= RemoveUser.sh =========="
 echo "InstanceID is $INSTANCEID"
 echo "Killing all processes.."
 USERID=$(id -u $INSTANCEID)
+systemctl stop $INSTANCEID
+systemctl disable $INSTANCEID
+systemctl daemon-reload
+systemctl reset-failed
 pkill -U $USERID
 echo "Removing firewall rule.."
 ufw delete allow $BASEPORT
@@ -29,4 +33,3 @@ rm -R -d /home/$INSTANCEID
 rm /etc/systemd/system/$INSTANCEID.service
 sed -i "/^$INSTANCEID/ d" ServerList.txt
 echo "========== END =========="
-
